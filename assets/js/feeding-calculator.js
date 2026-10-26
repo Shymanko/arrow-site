@@ -118,7 +118,7 @@
             "talking: weigh every 2–4 weeks and run a body condition check with your hands. " +
             "If the ribs are getting harder to feel, take about 10% off. If the waist is " +
             "becoming sharp and the ribs obvious, add about 10%.</p>";
-    html += '<p><a href="/guides/is-my-dog-overweight-body-condition-score/">' +
+    html += '<p><a href="/arrow-site/guides/is-my-dog-overweight-body-condition-score/">' +
             "How to run a 30-second body condition check &rarr;</a></p>";
 
     html += '<p><small>A starting estimate for a healthy dog, from the standard ' +

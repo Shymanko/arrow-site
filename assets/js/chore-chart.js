@@ -176,7 +176,7 @@
             '<button type="button" class="btn btn-ghost" id="copy-chart">Copy as text</button>' +
             "</div>";
     html += '<p class="no-print"><small>Sticking it on the fridge works. So does putting the ' +
-            'same rota in <a href="/#get-arrow">Arrow</a>, which sends the reminder only to ' +
+            'same rota in <a href="/arrow-site/#get-arrow">Arrow</a>, which sends the reminder only to ' +
             'whoever is on duty and tells everyone else it is done.</small></p>';
     html += "</div>";
 
@@ -212,7 +212,7 @@
       });
       lines.push("");
     }
-    lines.push("Made with the free chore chart maker at arrowpetcare.com");
+    lines.push("Made with the free chore chart maker at shymanko.github.io/arrow-site");
     return lines.join("\n");
   }
 
