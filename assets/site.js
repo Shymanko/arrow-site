@@ -2,33 +2,42 @@
 (() => {
   const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
-  // Showcase: choosing a name swaps the phone screen and the squircle colour.
-  const showcase = $('.showcase'), fact = $('.show-fact');
-  const facts = {
-    today: 'Try it: tap <b>Fed</b>. Max already fed Luna, so Arrow asks first.',
-    turns: 'Turns rotate fairly. Ask for a swap and it moves in one tap.',
-    reminders: 'Only the person on duty is pinged, and it clears for everyone once done.',
-    training: '24 lessons, one moment per step, with a timer that keeps sessions short.',
-    awards: '60 medals reward the household for showing up, not for perfection.'
-  };
-  $$('[data-show]').forEach(tab => tab.addEventListener('click', () => {
-    const id = tab.dataset.show;
-    $$('[data-show]').forEach(t => t.setAttribute('aria-selected', String(t === tab)));
-    $$('.screen').forEach(s => { s.hidden = s.dataset.screen !== id; });
-    showcase.dataset.active = id; fact.innerHTML = facts[id];
-  }));
+  // Story: the step nearest the reading line decides which screen the phone shows.
+  const story = $('.story'), screens = $$('.story .screen'), steps = $$('.story .step');
+  if (story) {
+    story.classList.add('story-live');
+    const show = (id) => {
+      steps.forEach(s => s.classList.toggle('is-on', s.dataset.step === id));
+      screens.forEach(s => s.classList.toggle('is-on', s.dataset.screen === id));
+      story.dataset.active = id;
+    };
+    // The reading line sits mid-screen on a desktop and below the pinned phone on a phone.
+    const narrow = matchMedia('(max-width:900px)');
+    let current = '', ticking = false;
+    const pick = () => {
+      ticking = false;
+      const y = innerHeight * (narrow.matches ? 0.9 : 0.5);
+      let id = steps[0].dataset.step;
+      for (const s of steps) if (s.getBoundingClientRect().top <= y) id = s.dataset.step;
+      // On a phone, words that start sliding under the pinned phone step aside instead.
+      if (narrow.matches) {
+        const copy = steps.find(s => s.dataset.step === id).firstElementChild.getBoundingClientRect();
+        if (copy.top < $('.stage-sticky').getBoundingClientRect().bottom - 2) { steps.forEach(s => s.classList.remove('is-on')); current = ''; return; }
+      }
+      if (id !== current) { current = id; show(id); }
+    };
+    addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(pick); } }, { passive: true });
+    addEventListener('resize', pick);
+    pick();
+  }
 
   // The live thing: a repeat feeding by someone else is held until confirmed.
   const sheet = $('.ui-sheet'), toast = $('.ui-toast');
-  const say = (text) => { toast.textContent = text; toast.hidden = false; clearTimeout(say.t); say.t = setTimeout(() => { toast.hidden = true; }, 2200); };
-  $$('[data-log]').forEach(b => b.addEventListener('click', () => {
-    const kind = b.dataset.log;
-    if (kind === 'food') { sheet.hidden = false; $('[data-sheet=cancel]', sheet).focus(); return; }
-    say(kind === 'walk' ? 'Walk logged — Max and Sofia see it now' : 'Water logged. Everyone sees it.');
-  }));
   $$('[data-sheet]').forEach(b => b.addEventListener('click', () => {
     sheet.hidden = true;
-    say(b.dataset.sheet === 'log' ? 'Second meal logged — the family sees two' : 'Nothing logged. Luna is fed.');
+    toast.textContent = b.dataset.sheet === 'log' ? 'Second meal logged. The family sees two.' : 'Nothing logged. Luna is fed.';
+    toast.hidden = false;
+    clearTimeout(toast.t); toast.t = setTimeout(() => { toast.hidden = true; sheet.hidden = false; }, 2400);
   }));
 
   // Pricing: one stage, contents follow the selected plan.
@@ -54,8 +63,8 @@
   // Entrances: each section's heading, text, then picture, staggered once.
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
     document.documentElement.classList.add('reveal-on');
-    $$('main section').forEach(sec => {
-      const parts = $$('h1,h2,p,.btn,figure,.phone,.bar .seg,.spec,.card,.plans button,.tile', sec);
+    $$('main section:not(.story)').forEach(sec => {
+      const parts = $$('h1,h2,p,.btn,figure,.phone,.bar .seg,.card,.plans button', sec);
       parts.forEach((el, i) => { el.dataset.reveal = ''; el.style.transitionDelay = (Math.min(i, 8) * 75) + 'ms'; });
       new IntersectionObserver((entries, io) => entries.forEach(e => { if (e.isIntersecting) { parts.forEach(p => p.classList.add('in')); io.disconnect(); } }), { threshold: 0.12 }).observe(sec);
     });
