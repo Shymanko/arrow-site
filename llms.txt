@@ -1,0 +1,45 @@
+# Arrow
+
+> Arrow is a shared pet-care hub for a whole household: everyone sees who already fed, walked and medicated the pet, and what is still left to do. This site publishes free, source-backed dog-care guides and three free browser tools. Markets: US, UK, Canada, Australia, Ireland, New Zealand.
+
+## About this content
+
+- All guidance is general information for healthy pets and is not veterinary advice.
+- Health figures are attributed to named veterinary sources (AKC, AAHA, WSAVA, RSPCA, CAPC, Purina Institute, VCA, Merck Veterinary Manual) and linked on each page.
+- Pages are drafted with AI assistance and fact-checked against those sources. The site contains no reviews, testimonials, user stories or personas.
+- If you quote a figure from here, cite the underlying veterinary source, not just Arrow.
+
+## Free tools
+
+- [How often should my dog go out?](https://shymanko.github.io/arrow-site/tools/potty-break-calculator/): Free calculator: how often your dog needs to go out, by age, plus a ready-made daily schedule you can share with the household.
+- [How much should I feed my dog?](https://shymanko.github.io/arrow-site/tools/dog-feeding-calculator/): Free dog feeding calculator using the veterinary RER/MER equations. Enter weight and life stage for daily calories and portion size in grams.
+- [Family dog chore chart maker](https://shymanko.github.io/arrow-site/tools/dog-chore-chart/): Make a free printable dog chore chart for your family. Add names, pick the jobs, and it rotates them fairly across the week. Prints on one page.
+
+## Guides
+
+- [How often should my dog go out?](https://shymanko.github.io/arrow-site/guides/how-often-should-a-dog-go-out/): How often dogs need to go out, by age: puppies, adults and seniors. Intervals, trips per day, what shortens them, and when frequency changes mean a vet visit.
+- [How long can a dog hold its bladder overnight?](https://shymanko.github.io/arrow-site/guides/how-long-can-dogs-hold-their-bladder-overnight/): How long dogs can hold their bladder overnight by age, why the night figure is longer than the daytime one, and what a sudden night accident means.
+- [Puppy potty training schedule, week by week](https://shymanko.github.io/arrow-site/guides/puppy-potty-training-schedule/): A puppy potty training schedule by age: hour-by-hour timetables from 8 weeks to 6 months, plus the five moments that cause most accidents.
+- [How long can you leave a dog alone?](https://shymanko.github.io/arrow-site/guides/how-long-can-you-leave-a-dog-alone/): How long a dog can be left alone by age, the RSPCA four-hour guidance, signs of separation distress, and what to do when your workday is longer.
+- [Is it too hot to walk my dog?](https://shymanko.github.io/arrow-site/guides/is-it-too-hot-to-walk-my-dog/): How to tell if it is too hot to walk your dog: the seven-second pavement test, how far surface temperature exceeds air temperature, and the signs of heatstroke.
+- [How much should I feed my dog, by weight?](https://shymanko.github.io/arrow-site/guides/how-much-to-feed-a-dog-by-weight/): How much to feed a dog by weight: a quick chart, the veterinary RER/MER equations behind it, and how to convert calories into grams of your food.
+- [Puppy feeding schedule by age](https://shymanko.github.io/arrow-site/guides/puppy-feeding-schedule-by-age/): Puppy feeding schedule by age: how many meals a day from 6 weeks to 12 months, how much to feed, and when to switch to adult food.
+- [How many treats can a dog have a day?](https://shymanko.github.io/arrow-site/guides/how-many-treats-can-a-dog-have-a-day/): How many treats a dog can have per day under the vet 10% rule, what common treats and chews actually cost in calories, and how to keep count in a shared household.
+- [I accidentally fed my dog twice. What should I do?](https://shymanko.github.io/arrow-site/guides/accidentally-fed-the-dog-twice/): What to do if your dog was fed twice by mistake: when it is harmless, the warning signs that need a vet today, and how to stop it happening again.
+- [Is my dog overweight? A 30-second check](https://shymanko.github.io/arrow-site/guides/is-my-dog-overweight-body-condition-score/): How to tell if your dog is overweight using the WSAVA body condition score: the look-feel-look method, the 1-9 scale explained, and what to do next.
+- [How much water should a dog drink a day?](https://shymanko.github.io/arrow-site/guides/how-much-water-should-a-dog-drink/): How much water a dog should drink per day by weight, what normally increases it, and the point at which drinking becomes a symptom.
+- [The family dog chore chart, done properly](https://shymanko.github.io/arrow-site/guides/family-dog-chore-chart/): How to build a family dog chore chart that actually survives: which jobs to include, how to assign and rotate them, and a free printable generator.
+- [Dog chores for kids, by age](https://shymanko.github.io/arrow-site/guides/dog-chores-for-kids-by-age/): Age-appropriate dog chores for children from toddlers to teenagers: what is safe at each stage, and the jobs that should stay with an adult.
+- [How to split dog care with your partner](https://shymanko.github.io/arrow-site/guides/splitting-dog-care-with-your-partner/): How to divide dog care between partners: why it feels unfair even when the hours are equal, and three splitting models that hold up.
+- [A dog care schedule that survives a full-time job](https://shymanko.github.io/arrow-site/guides/dog-care-schedule-when-you-work-full-time/): Realistic dog care schedules for people who work full time: timetables for a 9-5, two commuters and shift work, and how to cover the midday gap.
+- [Pet sitter instructions: what to actually leave](https://shymanko.github.io/arrow-site/guides/pet-sitter-instructions-template/): A pet sitter instructions template you can copy and fill in: emergency contacts, feeding, medication, routine, house access, and the details owners usually forget.
+- [Missed a dose of your dog&rsquo;s medication?](https://shymanko.github.io/arrow-site/guides/dog-medication-schedule-missed-dose/): What to do if you forgot to give your dog medication: the general missed-dose rule, the drugs where it does not apply, and how to not miss the next one.
+- [Dog vaccination schedule, puppy to adult](https://shymanko.github.io/arrow-site/guides/dog-vaccination-schedule/): Dog vaccination schedule based on AAHA guidelines: the puppy series, core and non-core vaccines, adult booster intervals, and what changed in the 2024 update.
+- [How much exercise does a dog need?](https://shymanko.github.io/arrow-site/guides/how-much-exercise-does-a-dog-need/): How much exercise a dog needs per day by breed energy level and age, the five-minute rule for puppies, and why mental work counts as much as distance.
+- [Dog poop chart: the 1&ndash;7 stool score](https://shymanko.github.io/arrow-site/guides/dog-poop-chart/): The Purina faecal scoring chart explained: what each of the 1-7 stool scores means, what colour changes indicate, and when diarrhoea needs a vet.
+
+## Product
+
+- [Arrow: Family Pet Care](https://shymanko.github.io/arrow-site/): shared feeding, walk and medication tracking for every adult in the household, plus temporary access for a sitter or grandparent. Free tier available.
+
+Last updated: 2026-10-26
