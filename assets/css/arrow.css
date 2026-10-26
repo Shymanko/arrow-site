@@ -378,3 +378,9 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--red); outli
   .chart-out { page-break-inside: avoid; }
   @page { margin: 12mm; }
 }
+
+/* Brand pass: the Arrow wordmark and Onest, matching the landing page. */
+body,button,input,select,textarea{font-family:"Onest",system-ui,sans-serif}
+.brand{color:#cd1f1d;display:inline-block;width:112px;line-height:0}
+.brand svg{width:100%;height:auto;display:block}
+h1,h2{font-weight:800;letter-spacing:-.03em}
