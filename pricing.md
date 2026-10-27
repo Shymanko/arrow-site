@@ -42,6 +42,6 @@ Last updated: 2026-10-27
 
 ## Sources on this site
 
-- Human-readable pricing: https://shymanko.github.io/arrow-site/#pricing
-- Site overview for AI systems: https://shymanko.github.io/arrow-site/llms.txt
-- How the guides are researched and sourced: https://shymanko.github.io/arrow-site/editorial-standards/
+- Human-readable pricing: https://arrowpetcare.com/#pricing
+- Site overview for AI systems: https://arrowpetcare.com/llms.txt
+- How the guides are researched and sourced: https://arrowpetcare.com/editorial-standards/

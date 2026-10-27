@@ -26,10 +26,11 @@
   document.fonts.ready.then(() => {
     if (title && window.SplitText) {
       const split = new SplitText(title, { type: 'words', mask: 'words' });
+      (split.masks || []).forEach(m => { m.style.paddingBottom = '.14em'; m.style.marginBottom = '-.14em'; });
       gsap.from(split.words, { yPercent: 110, duration: 1.1, ease: 'expo.out', stagger: 0.07, delay: 0.15 });
     }
-    gsap.from('.hero .lede, .hero .btn, .hero-links', { y: 24, opacity: 0, duration: 0.9, ease: 'power3.out', stagger: 0.1, delay: 0.6 });
-    gsap.from('.hero-mark', { scale: 0.86, opacity: 0, duration: 1, ease: 'expo.out' });
+    gsap.from('.hero .lede, .hero .btn, .hero-links', { y: 18, duration: 0.9, ease: 'power3.out', stagger: 0.1, delay: 0.5 });
+    gsap.from('.hero-pings .ping', { y: 30, scale: 0.92, opacity: 0, duration: 0.8, ease: 'back.out(1.5)', stagger: 0.45, delay: 1.2 });
   });
   if (photos) {
     gsap.fromTo(photos, { clipPath: 'inset(9% 14% 9% 14% round 120px)' }, { clipPath: 'inset(0% 0% 0% 0% round 28px)', duration: 1.6, ease: 'expo.inOut', delay: 0.2 });

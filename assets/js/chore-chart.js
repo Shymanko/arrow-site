@@ -212,7 +212,7 @@
       });
       lines.push("");
     }
-    lines.push("Made with the free chore chart maker at shymanko.github.io/arrow-site");
+    lines.push("Made with the free chore chart maker at arrowpetcare.com");
     return lines.join("\n");
   }
 

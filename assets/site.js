@@ -63,7 +63,7 @@
   // Entrances: each section's heading, text, then picture, staggered once.
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
     document.documentElement.classList.add('reveal-on');
-    $$('main section:not(.story)').forEach(sec => {
+    $$('main section:not(.story):not(.hero)').forEach(sec => {
       const parts = $$('h1,h2,p,.btn,figure,.phone,.bar .seg,.card,.plans button', sec);
       parts.forEach((el, i) => { el.dataset.reveal = ''; el.style.transitionDelay = (Math.min(i, 8) * 75) + 'ms'; });
       new IntersectionObserver((entries, io) => entries.forEach(e => { if (e.isIntersecting) { parts.forEach(p => p.classList.add('in')); io.disconnect(); } }), { threshold: 0.12 }).observe(sec);
