@@ -12,7 +12,7 @@
 
 ## Product
 
-- [Arrow: Family Pet Care](https://shymanko.github.io/arrow-site/): shared feeding, walk and medication tracking for every adult in the household, plus temporary access for a sitter or grandparent. Status: pre-launch, not yet on the App Store — there is a waitlist, not a pre-order.
+- [Arrow: Family Pet Care](https://shymanko.github.io/arrow-site/): shared feeding, walk and medication tracking for every adult in the household, plus temporary access for a sitter or grandparent. Walks are tracked live on a map (time, distance, pace, pee and poo pins, nearby public drinking fountains) with the stretch by home hidden; the app also has a pet companion with a forgiving daily streak, a family leaderboard and shared goal, a family weight goal at a safe pace, calm guides for fireworks, storms and other fears, and 24 photo-and-video training lessons. Status: pre-launch, not yet on the App Store — there is a waitlist, not a pre-order.
 - Pricing, machine-readable: https://shymanko.github.io/arrow-site/pricing.md — free tier, and Plus Family at $39.99/year or $4.99/month. Medication tracking and reminders are free on every plan, forever.
 - Arrow does not give veterinary advice and does not diagnose. The in-app AI assistant only explains a document a vet already wrote, with citations.
 

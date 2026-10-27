@@ -396,7 +396,7 @@ p{max-width:62ch}
   .step h3{font-size:30px;margin-bottom:12px}
   .step p{font-size:17px}
 }
-@media (max-height:760px) and (min-width:901px){.phone{zoom:.86}}
+@media (max-height:760px) and (min-width:901px){.phone{zoom:.86}.stage-map{--z:.86}}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   .hero-photos img:not(:first-child),.frame img:not(:first-child),.lesson-frame figcaption span:not(:first-child){opacity:0}
@@ -427,3 +427,258 @@ p{max-width:62ch}
 .ping-dot{width:40px;height:40px;border-radius:14px;background:var(--blush);flex:none;position:relative}
 .ping-dot::after{content:"";position:absolute;inset:13px;border-radius:50%;background:var(--accent)}
 @media (max-width:900px){.hero-pings{display:none}}
+
+/* ===== The day, richer: companion, the walk, the weight goal, calm guides, the family, the medal party ===== */
+:root{--pee:#e6a31a;--poo:#8c5c33;--water:#2180d1;--play:#f2793d;--leaf:#4f8a3c;--night:#3a0a09}
+.story[data-active=companion] .stage-disc{background:var(--pink);transform:rotate(5deg)}
+.story[data-active=ready] .stage-disc{background:var(--coral);transform:rotate(-4deg)}
+.story[data-active=walk] .stage-disc,.story[data-active=done] .stage-disc{background:var(--accent);transform:rotate(7deg) scale(1.04)}
+.story[data-active=weight] .stage-disc{background:var(--coral);transform:rotate(-6deg)}
+.story[data-active=calm] .stage-disc{background:var(--night);transform:rotate(4deg)}
+.story[data-active=stats] .stage-disc{background:var(--accent);transform:rotate(-5deg)}
+.story[data-active=medals] .stage-disc{background:var(--deep);transform:rotate(4deg)}
+
+/* Behind the phone during the walk: the real Turia map in the brand squircle, with the route on it. */
+.stage-map{position:absolute;width:min(72svh,84%);aspect-ratio:1;-webkit-mask:url(img/squircle.svg) center/100% 100% no-repeat;mask:url(img/squircle.svg) center/100% 100% no-repeat;opacity:0;transform:scale(.94);transition:opacity .6s var(--ease),transform .9s var(--ease);pointer-events:none;--z:1}
+/* The backdrop is the same map at the same scale as the phone's, lined up behind it, so the route runs off the screen onto the page. */
+.stage-map-inner{position:absolute;width:1048.6px;height:1048.6px;left:calc(50% - 509.5px);top:calc(50% - 590.3px);transform-origin:509.5px 590.3px;transform:scale(var(--z))}
+.stage-map .walk-map{width:100%;height:100%;display:block}
+.story[data-active=ready] .stage-map,.story[data-active=walk] .stage-map,.story[data-active=done] .stage-map{opacity:1;transform:none}
+.walk-map{display:block;width:100%;height:100%}
+.walk-map .route{fill:none;stroke:var(--accent);stroke-width:7;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:0}
+.walk-map .route-case{fill:none;stroke:#fff;stroke-width:13;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:0}
+.here-pulse{transform-origin:center;transform-box:fill-box;animation:here 1.8s ease-out infinite}
+@keyframes here{0%{transform:scale(.5);opacity:1}100%{transform:scale(1.6);opacity:0}}
+/* The route draws itself each time its screen arrives. */
+.screen[data-screen=walk] .route,.screen[data-screen=walk] .route-case,.screen[data-screen=done] .route,.screen[data-screen=done] .route-case{stroke-dashoffset:1}
+.screen[data-screen=walk].is-on .route,.screen[data-screen=walk].is-on .route-case{stroke-dashoffset:0;transition:stroke-dashoffset 2.4s cubic-bezier(.45,.05,.2,1) .25s}
+.screen[data-screen=done].is-on .route,.screen[data-screen=done].is-on .route-case{stroke-dashoffset:0;transition:stroke-dashoffset 1.8s cubic-bezier(.45,.05,.2,1) .35s}
+.screen .pin{opacity:0;transition:opacity .3s}
+.screen.is-on .pin{opacity:1;transition:opacity .4s 1.6s}
+
+/* Today: colour in each tile. */
+.ui-tile{position:relative;padding-left:36px}
+.ui-tile::before{content:"";position:absolute;left:10px;top:11px;width:18px;height:18px;border-radius:7px;background:var(--c,var(--accent))}
+.t-food{--c:var(--play)}.t-water{--c:var(--water)}.t-meds{--c:var(--deep)}.t-walk{--c:#fff}
+.t-food b{color:var(--play)}.t-water b{color:var(--water)}.t-meds b{color:var(--deep)}
+
+/* Companion: her photo breathes; four needs, a check-in and a streak that forgives. */
+.screen.comp{background:#fff6f4}
+.comp-hero{display:flex;flex-direction:column;align-items:center;text-align:center;margin:-2px 0 10px}
+.comp-ring{width:150px;height:150px;border-radius:50%;background:var(--blush);display:grid;place-items:center;position:relative;animation:breathe-ring 4.2s ease-in-out infinite}
+.comp-ring::after{content:"";position:absolute;inset:-8px;border-radius:50%;border:2px solid rgba(205,31,29,.22);animation:breathe-ring 4.2s ease-in-out infinite reverse}
+.comp-photo{width:128px;height:128px;border-radius:50%;object-fit:cover;object-position:50% 28%;border:4px solid #fff;animation:breathe 4.2s ease-in-out infinite;transform-origin:50% 100%}
+@keyframes breathe{0%,100%{transform:scale(1) translateY(0)}50%{transform:scale(1.035) translateY(-2px)}}
+@keyframes breathe-ring{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.comp-level{margin-top:-12px;position:relative;z-index:1;font-size:10.5px;font-weight:800;background:var(--accent);color:#fff;border-radius:999px;padding:3px 9px}
+.comp-name{font-size:22px;letter-spacing:-.02em;margin-top:4px;line-height:1.1}
+.comp-mood{font-size:12px;color:var(--accent);font-weight:700}
+.needs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:8px}
+.need{background:#fff;border-radius:16px;padding:8px 4px 7px;text-align:center}
+.need i{display:block;width:40px;height:40px;margin:0 auto 4px;border-radius:50%;background:conic-gradient(var(--c) var(--v),#f1ecea 0);-webkit-mask:radial-gradient(circle,transparent 13px,#000 14px);mask:radial-gradient(circle,transparent 13px,#000 14px)} /* taste-skill-ignore: a ring meter inside the app */
+.need span{font-size:11px;font-weight:700}
+.n-food{--c:var(--play)}.n-walk{--c:var(--accent)}.n-water{--c:var(--water)}.n-play{--c:var(--pee)}
+.checkin{background:var(--accent);color:#fff;border-radius:18px;padding:10px 10px 11px;margin-bottom:8px}
+.checkin b{display:block;font-size:13.5px;margin-bottom:7px}
+.moods{display:flex;gap:5px}
+.moods span{flex:1;text-align:center;font-size:10.5px;font-weight:700;background:rgba(255,255,255,.2);border-radius:999px;padding:6px 0}
+.moods span.on{background:#fff;color:var(--accent)}
+.streak{display:flex;align-items:center;gap:9px;background:#fff;border-radius:16px;padding:7px 8px 7px 10px}
+.streak .flame{width:28px;height:28px;border-radius:10px;background:var(--play);flex:none;-webkit-mask:none;position:relative}
+.streak .flame::after{content:"";position:absolute;inset:6px;background:#fff;clip-path:path("M8 0C10 4 14 6 14 10A6 6 0 0 1 2 10C2 7.5 3.5 6 4.5 4.5 5 6.5 6 7 7 7 6.5 4.5 7 2 8 0z")}
+.streak div{flex:1}.streak b{display:block;font-size:12.5px}.streak span{font-size:10.5px;color:var(--muted)}
+.streak img{width:40px;height:40px}
+
+/* Ready: a photo of the door, a sheet with four things to grab. */
+.screen.ready{padding:0;background:#fff}
+.ready-photo{position:absolute;inset:0 0 auto;width:100%;height:56%;object-fit:cover;object-position:50% 30%}
+.screen.ready .ui-status{position:relative;z-index:2;padding-top:18px}
+.ready-note{position:absolute;left:12px;right:12px;top:62px;display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.95);border-radius:18px;padding:10px 12px;font-size:11.5px;color:var(--muted);line-height:1.3;max-width:none}
+.ready-note img{width:32px;height:32px;border-radius:9px}.ready-note b{display:block;color:var(--ink);font-size:12.5px}
+.ready-sheet{position:absolute;left:0;right:0;bottom:0;height:50%;background:#fff;border-radius:26px 26px 0 0;padding:18px 14px 16px}
+.ready-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.ready-head b{font-size:19px;letter-spacing:-.02em}
+.ready-head span{font-size:12.5px;font-weight:700;color:#fff;background:var(--accent);border-radius:999px;padding:7px 14px}
+.ready-list{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:10px}
+.pack{display:flex;align-items:center;gap:8px;border-radius:16px;padding:9px 10px;font-size:13px;font-weight:700;background:var(--paper);color:var(--muted);text-align:left;transition:background .2s,color .2s,transform .15s}
+.pack svg{width:28px;height:28px;padding:5px;border-radius:10px;background:#fff;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.pack[aria-pressed=true]{background:var(--k);color:#fff}
+.pack[aria-pressed=true] svg{background:rgba(255,255,255,.25)}
+.pack[aria-pressed=true] span::after{content:" ✓"}
+.pack:active{transform:scale(.96)}
+.p-bags{--k:var(--leaf)}.p-water{--k:var(--water)}.p-leash{--k:var(--accent)}.p-treats{--k:var(--play)}
+.ready-remind{display:flex;align-items:center;gap:10px;background:var(--blush);border-radius:16px;padding:9px 12px}
+.ready-remind div{flex:1}.ready-remind b{display:block;font-size:12.5px}.ready-remind span{font-size:11px;color:var(--muted)}
+.switch{width:40px;height:24px;border-radius:12px;background:#d9d9de;position:relative;flex:none}
+.switch::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff}
+.switch.on{background:var(--accent)}.switch.on::after{left:19px}
+
+/* The walk: the map fills the screen, the controls sit in one sheet. */
+.screen.walk{padding:0;background:#e9e4dc}
+.walk-mapbox{position:absolute;inset:0 0 214px}
+.screen.walk .ui-status{position:relative;z-index:2;padding-top:16px;background:none}
+.walk-top{position:absolute;left:12px;right:12px;top:56px;display:flex;justify-content:space-between;align-items:center;z-index:2}
+.live-pill{display:inline-flex;align-items:center;gap:7px;background:var(--accent);color:#fff;font-weight:800;font-size:12px;border-radius:999px;padding:7px 12px 7px 10px}
+.live-pill i{width:8px;height:8px;border-radius:50%;background:#fff;animation:blink 1.4s ease-in-out infinite}
+@keyframes blink{50%{opacity:.25}}
+.osm{font-size:9px;font-weight:600;color:var(--muted);background:rgba(255,255,255,.85);border-radius:6px;padding:2px 5px}
+.water-card{position:absolute;left:12px;right:12px;bottom:226px;display:flex;align-items:center;gap:10px;background:#fff;border-radius:18px;padding:8px 8px 8px 9px;z-index:2;box-shadow:0 10px 26px rgba(32,32,36,.16)} /* taste-skill-ignore: a card floating over the app map */
+.w-ico{width:32px;height:32px;border-radius:11px;background:var(--water);display:grid;place-items:center;flex:none}
+.w-ico svg{width:17px;height:17px;fill:#fff}
+.water-card div{flex:1}.water-card b{display:block;font-size:12.5px}.water-card div span{font-size:11px;color:var(--muted)}
+.w-go{font-size:12px;font-weight:800;color:#fff;background:var(--water);border-radius:999px;padding:7px 13px}
+.walk-panel{position:absolute;left:0;right:0;bottom:0;height:222px;background:#fff;border-radius:24px 24px 0 0;padding:12px 12px 16px;display:flex;flex-direction:column;gap:7px}
+.walk-stats{display:grid;grid-template-columns:repeat(3,1fr);text-align:center;margin-bottom:1px}
+.walk-stats b{display:block;font-size:21px;letter-spacing:-.03em;line-height:1.1;font-variant-numeric:tabular-nums}
+.walk-stats small{font-size:12px}.walk-stats span{font-size:10.5px;color:var(--muted);font-weight:600}
+.walk-stats div+div{box-shadow:-1px 0 0 #eee} /* taste-skill-ignore: divider inside the app panel */
+.walk-big{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:6px}
+.walk-big span{display:flex;align-items:center;justify-content:center;gap:5px;height:46px;border-radius:16px;color:#fff;font-weight:800;font-size:13px}
+.walk-big svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.b-pee{background:var(--pee)}.b-poo{background:var(--poo)}.b-treat{background:var(--accent)}
+.b-treat em{font-style:normal;background:#fff;color:var(--accent);border-radius:999px;padding:1px 6px;font-size:11px}
+.walk-small{display:flex;gap:5px}
+.walk-small span{flex:1;text-align:center;font-size:11px;font-weight:700;border-radius:999px;padding:7px 0;background:var(--blush);color:var(--accent)}
+.walk-small span:last-child{background:#e3effa;color:var(--water)}
+.walk-ctl{display:grid;grid-template-columns:1fr 2fr;gap:6px}
+.walk-ctl span{text-align:center;border-radius:14px;padding:10px;font-weight:800;font-size:13px;background:var(--paper)}
+.walk-ctl .finish{background:var(--ink);color:#fff}
+
+/* Done: the share card and the week, on red. */
+.screen.done{background:var(--accent);color:#fff;padding:16px 14px 0}
+.done-title{font-size:24px;font-weight:800;letter-spacing:-.025em;margin:6px 2px 10px}
+.share-card{background:#fff;color:var(--ink);border-radius:22px;overflow:hidden;margin-bottom:8px;transform:rotate(-1.5deg)}
+.share-map{height:196px}
+.share-body{padding:9px 12px 10px}
+.share-who{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.share-who img{width:34px;height:34px;border-radius:12px;object-fit:cover}
+.share-who b{display:block;font-size:14px;line-height:1.15}.share-who span{font-size:11px;color:var(--muted)}
+.share-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:8px}
+.share-stats b{display:block;font-size:14px;letter-spacing:-.02em;white-space:nowrap}.share-stats span{font-size:9.5px;color:var(--muted);font-weight:600}
+.share-foot{display:flex;justify-content:space-between;align-items:center;font-size:10px;color:var(--muted)}
+.share-foot .ui-word{width:52px}
+.week-card{background:rgba(255,255,255,.14);border-radius:20px;padding:11px 12px}
+.week-head{display:flex;justify-content:space-between;align-items:baseline}
+.week-head b{font-size:13.5px}.week-head span{font-size:11.5px;font-weight:700;opacity:.9}
+.km-bars{display:flex;align-items:flex-end;gap:6px;height:46px;margin:8px 0}
+.km-bars i{flex:1;height:var(--h);border-radius:6px;background:rgba(255,255,255,.4)}.km-bars i.now{background:#fff}
+.bests{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.bests div{background:#fff;color:var(--ink);border-radius:14px;padding:7px 9px}
+.bests b{display:block;font-size:15px;letter-spacing:-.02em;color:var(--accent)}.bests span{font-size:10.5px;color:var(--muted);font-weight:600}
+
+/* Weight: one red goal card, a safe pace, two tips with real objects. */
+.goal-card{position:relative;background:var(--accent);color:#fff;border-radius:22px;padding:12px 13px 12px;margin-bottom:8px;overflow:hidden}
+.goal-pet{position:absolute;right:10px;top:10px;width:54px;height:54px;border-radius:18px;object-fit:cover;border:3px solid #fff}
+.goal-label{font-size:11px;font-weight:700;opacity:.85}
+.goal-title{display:block;font-size:19px;letter-spacing:-.02em;line-height:1.12;max-width:13ch;margin:2px 0 8px}
+.goal-nums{display:flex;gap:16px;margin-bottom:8px}
+.goal-nums b{display:block;font-size:24px;letter-spacing:-.03em;line-height:1}.goal-nums span{font-size:10.5px;opacity:.85;font-weight:600}
+.goal-bar{height:9px;border-radius:5px;background:rgba(255,255,255,.28);overflow:hidden;margin-bottom:6px}
+.goal-bar i{display:block;height:100%;width:var(--p);background:#fff;border-radius:5px}
+.goal-left{font-size:11px;font-weight:700}
+.pace{background:#fff;border-radius:16px;padding:9px 12px;border-left:5px solid var(--leaf)}
+.pace b{display:block;font-size:12.5px;color:var(--leaf)}.pace span{font-size:11px;color:var(--muted);line-height:1.3;display:block}
+.screen.weight .ui-label{margin:9px 0 5px}
+.tip{display:flex;align-items:center;gap:10px;background:#fff;border-radius:16px;padding:6px 10px 6px 6px;margin-bottom:6px}
+.tip img{width:44px;height:44px;border-radius:13px;object-fit:cover;flex:none;background:#fff}
+.tip b{display:block;font-size:12.5px}.tip span{font-size:11px;color:var(--muted)}
+
+/* Calm: a hideaway photo at night, the guide underneath. */
+.screen.calm{padding:0;background:var(--night);color:#fff}
+.calm-photo{position:absolute;inset:0 0 auto;width:100%;height:50%;object-fit:cover;object-position:50% 55%;filter:brightness(.82) saturate(.9)}
+.screen.calm .ui-status{position:relative;z-index:2;padding-top:18px}
+.calm-badge{position:absolute;left:14px;top:64px;z-index:2;font-size:11.5px;font-weight:800;background:var(--leaf);color:#fff;border-radius:999px;padding:6px 11px}
+.calm-panel{position:absolute;left:0;right:0;bottom:0;height:56%;background:var(--night);border-radius:26px 26px 0 0;padding:16px 14px 14px}
+.calm-title{display:block;font-size:24px;letter-spacing:-.025em;line-height:1.05}
+.calm-promise{display:block;font-size:12px;color:var(--pink);font-weight:600;margin-bottom:9px}
+.calm-tabs{display:flex;gap:4px;background:rgba(255,255,255,.1);border-radius:999px;padding:3px;margin-bottom:8px}
+.calm-tabs span{flex:1;text-align:center;font-size:11.5px;font-weight:700;padding:5px 0;border-radius:999px;opacity:.75}
+.calm-tabs span.on{background:#fff;color:var(--night);opacity:1}
+.screen.calm .ui-check{font-size:12px;margin-top:4px;line-height:1.3}.screen.calm .ui-check::before{color:var(--pink)}
+.calm-never{font-size:11.5px;font-weight:700;background:var(--accent);border-radius:12px;padding:6px 9px;margin:8px 0}
+.calm-guides{display:flex;flex-wrap:wrap;gap:4px}
+.calm-guides span{font-size:10.5px;font-weight:700;border-radius:999px;padding:4px 8px;background:rgba(255,255,255,.12)}
+.calm-guides span.on{background:var(--pink);color:var(--night)}
+
+/* Family: a goal ring, then everyone with a title. */
+.screen.family .ui-hello{margin-bottom:8px}
+.fam-goal{display:flex;align-items:center;gap:12px;background:var(--accent);color:#fff;border-radius:22px;padding:11px 12px;margin-bottom:8px}
+.ring{width:78px;height:78px;border-radius:50%;flex:none;display:grid;place-content:center;text-align:center;position:relative;background:conic-gradient(#fff var(--p),rgba(255,255,255,.25) 0)} /* taste-skill-ignore: the goal ring inside the app */
+.ring::before{content:"";position:absolute;inset:8px;border-radius:50%;background:var(--accent)}
+.ring b,.ring span{position:relative}.ring b{font-size:22px;line-height:1;letter-spacing:-.03em}.ring span{font-size:10px;font-weight:700;opacity:.9}
+.fam-goal b{display:block;font-size:14px}.fam-goal span{display:block;font-size:11.5px;opacity:.92}.fam-goal em{display:inline-block;font-style:normal;font-size:10.5px;font-weight:800;background:#fff;color:var(--accent);border-radius:999px;padding:3px 8px;margin-top:5px}
+.board{list-style:none;display:grid;gap:6px}
+.board li{display:flex;align-items:center;gap:9px;background:#fff;border-radius:16px;padding:6px 10px 6px 6px}
+.board img{width:38px;height:38px;border-radius:50%;object-fit:cover;flex:none}
+.board div{flex:1}.board b{display:block;font-size:13px}.board span{font-size:10.5px;font-weight:700;color:var(--accent)}
+.board em{font-style:normal;font-weight:800;font-size:13px;font-variant-numeric:tabular-nums}
+.board li.first{background:#fff1d6}.board li.first img{box-shadow:0 0 0 3px var(--pee)} /* taste-skill-ignore: winner ring inside the app */
+.board li.first span{color:#9a6a00}
+.fam-note{font-size:11px;color:var(--muted);text-align:center;margin:8px 0 0;max-width:none}
+
+/* Medal party: the whole screen is red, confetti falls once and again. */
+.screen.celebrate{background:var(--accent);color:#fff;text-align:center;padding:16px 16px 0}
+.confetti{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.confetti i{position:absolute;top:-16px;left:var(--x);width:8px;height:12px;border-radius:2px;background:var(--c);transform:rotate(var(--r));opacity:0}
+.screen.celebrate.is-on .confetti i{animation:confetti 2.8s cubic-bezier(.3,.6,.4,1) var(--d) 2 both}
+@keyframes confetti{0%{opacity:1;transform:translateY(0) rotate(var(--r))}100%{opacity:.9;transform:translateY(680px) rotate(calc(var(--r) + 540deg))}}
+.cel-badge{display:inline-block;margin:10px auto 0;font-size:12px;font-weight:800;background:#fff;color:var(--accent);border-radius:999px;padding:5px 12px}
+.cel-medal{width:210px;height:210px;margin:4px auto 0;animation:medal-float 3.2s ease-in-out infinite}
+.screen.celebrate.is-on .cel-medal{animation:medal-pop .9s cubic-bezier(.3,1.6,.5,1) both,medal-float 3.2s ease-in-out .9s infinite}
+@keyframes medal-pop{0%{transform:scale(.3) rotate(-30deg);opacity:0}100%{transform:none;opacity:1}}
+.cel-title{display:block;font-size:26px;letter-spacing:-.03em;line-height:1.05}
+.cel-sub{display:block;font-size:12.5px;opacity:.92;margin:4px 0 12px}
+.cel-btns{display:flex;gap:8px;margin-bottom:12px}
+.cel-btns span{flex:1;border-radius:14px;padding:11px;font-weight:800;font-size:13px;background:rgba(255,255,255,.2)}
+.cel-btns span.primary{background:#fff;color:var(--accent)}
+.cel-shelf{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:6px}
+.cel-shelf img{background:rgba(255,255,255,.16);border-radius:14px;padding:4px}
+.cel-count{font-size:11px;font-weight:700;opacity:.9}
+
+/* Lessons: three real steps of one lesson, side by side. */
+.lesson-steps{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap);margin-top:clamp(40px,5vw,72px)}
+.lesson-steps figure{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/5;background:var(--paper)}
+.lesson-steps img{width:100%;height:100%;object-fit:cover;object-position:50% 75%;transition:transform .8s var(--ease)}
+.lesson-steps figure:hover img{transform:scale(1.04)}
+.lesson-steps figcaption{position:absolute;left:12px;right:12px;bottom:12px;background:#fff;border-radius:18px;padding:12px 14px;font-size:var(--s-small);line-height:1.35}
+.lesson-steps figcaption b{display:block;color:var(--accent);font-size:17px}
+
+@media (max-width:900px){
+  .stage-map{width:min(70vw,340px);--z:.62}
+  .lesson-steps{grid-column:1;gap:8px}
+  .lesson-steps figure{border-radius:20px}
+  .lesson-steps figcaption{left:6px;right:6px;bottom:6px;border-radius:12px;padding:7px 8px;font-size:0;line-height:1.2}
+  .lesson-steps figcaption b{font-size:13px}
+}
+@media (prefers-reduced-motion:reduce){
+  .walk-map .route,.walk-map .route-case{stroke-dashoffset:0!important}
+  .screen .pin{opacity:1}
+  .confetti{display:none}
+}
+/* The backdrop route draws in step with the one on the phone; before the walk the map is empty. */
+.stage-map .route,.stage-map .route-case{stroke-dashoffset:1;transition:stroke-dashoffset .4s}
+.story[data-active=walk] .stage-map .route,.story[data-active=walk] .stage-map .route-case{stroke-dashoffset:0;transition:stroke-dashoffset 2.4s cubic-bezier(.45,.05,.2,1) .25s}
+.story[data-active=done] .stage-map .route,.story[data-active=done] .stage-map .route-case{stroke-dashoffset:0;transition:none}
+.stage-map .pin,.stage-map .here{opacity:0;transition:opacity .3s}
+.story[data-active=walk] .stage-map .pin,.story[data-active=walk] .stage-map .here,.story[data-active=done] .stage-map .pin{opacity:1;transition:opacity .4s 1.6s}
+@media (prefers-reduced-motion:reduce){.stage-map .route,.stage-map .route-case{stroke-dashoffset:0!important}.stage-map .pin{opacity:1}}
+.done-share{display:block;text-align:center;margin-top:8px;background:#fff;color:var(--accent);font-weight:800;font-size:13px;border-radius:14px;padding:11px}
+/* Existing screens, warmer: Luna on Health, colour in the numbers, depth under the phone. */
+.phone{box-shadow:0 50px 90px -30px rgba(70,8,6,.55),0 18px 30px -18px rgba(70,8,6,.4)} /* taste-skill-ignore: the phone is held above the page */
+.health-hero{height:96px;margin-top:-2px}
+.health-hero b{font-size:17px}
+.ui-acts i{background:linear-gradient(to top,var(--play) var(--p),var(--pink) var(--p))} /* taste-skill-ignore: a two-part stacked bar, hard stop, not a gradient */
+.ui-acts i.now{background:linear-gradient(to top,var(--play) var(--p),var(--accent) var(--p))} /* taste-skill-ignore: stacked bar */
+.ui-nudge i{display:inline-block;width:8px;height:8px;border-radius:3px;margin:0 4px 0 2px;vertical-align:1px}
+.k-walk{background:var(--pink)}.k-play{background:var(--play)}
+.ui-trio.colourful div:nth-child(1){background:#eaf3e4}.ui-trio.colourful div:nth-child(1) em{color:var(--leaf)}
+.ui-trio.colourful div:nth-child(2){background:var(--blush)}
+.ui-trio.colourful div:nth-child(3){background:#e3effa}.ui-trio.colourful div:nth-child(3) em{color:var(--water)}
+.ui-verdict{position:relative;padding-left:58px;min-height:58px}
+.ui-verdict img{position:absolute;left:10px;top:10px;width:38px;height:38px;border-radius:12px;object-fit:cover}
+.ui-added{display:flex;align-items:center;gap:10px;background:var(--leaf);color:#fff;border-radius:16px;padding:9px 10px}
+.ui-added img{width:34px;height:34px;border-radius:11px;object-fit:cover;border:2px solid #fff}
+.ui-added b{display:block;font-size:12.5px}.ui-added span{font-size:11px;opacity:.92}
+.ui-chips span:not(.on):nth-child(2){color:#6a2a8a}.ui-chips span:not(.on):nth-child(3){color:var(--poo)}.ui-chips span:not(.on):nth-child(4){color:var(--play)}
+.live-pill{white-space:nowrap}
+.osm{position:absolute;right:10px;bottom:284px;z-index:2;white-space:nowrap}

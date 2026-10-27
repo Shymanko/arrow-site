@@ -40,6 +40,9 @@
     clearTimeout(toast.t); toast.t = setTimeout(() => { toast.hidden = true; sheet.hidden = false; }, 2400);
   }));
 
+  // The pre-walk checklist: each thing you grab can be ticked on the phone.
+  $$('.pack').forEach(b => b.addEventListener('click', () => b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true'))));
+
   // Pricing: one stage, contents follow the selected plan.
   const plans = {
     free: ['$0', 'forever', 'One home, two pets, two people. Daily logging, the first eight lessons and medication reminders — reminders stay free forever.', 'Start free'],
