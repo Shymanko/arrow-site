@@ -1,8 +1,56 @@
 # robots.txt for Arrow
+
 User-agent: *
 Allow: /
 
-# AI crawlers: our guides may be used as a source. Please cite the page URL.
-# Full machine-readable summary: https://shymanko.github.io/arrow-site/llms.txt
+# --- AI crawlers -------------------------------------------------------------
+# These are four different jobs and they need four separate decisions. Blocking
+# a training crawler does not stop citations; blocking a search crawler does.
+#
+# 1. Search discovery: how an assistant finds us well enough to cite us.
+#    Allowed explicitly, so a future tightening of "User-agent: *" cannot
+#    quietly cost us AI visibility.
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+# 2. User-triggered retrieval: a person asked their assistant to open our page.
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+# 3. Model training: GPTBot, ClaudeBot, Google-Extended. Currently allowed,
+#    which is the state this site shipped in. To opt out of training without
+#    touching discovery or citations, uncomment the six lines below.
+#
+# User-agent: GPTBot
+# Disallow: /
+#
+# User-agent: ClaudeBot
+# Disallow: /
+#
+# User-agent: Google-Extended
+# Disallow: /
+
+# 4. Google Search itself is covered by "User-agent: *" above. Google-Extended
+#    controls Gemini training and grounding only; it has no effect on Search
+#    inclusion or ranking.
+
+# If you quote a figure from our guides, please cite the underlying veterinary
+# source we link to, not just Arrow.
+# Machine-readable site summary: https://shymanko.github.io/arrow-site/llms.txt
+# Machine-readable pricing:      https://shymanko.github.io/arrow-site/pricing.md
 
 Sitemap: https://shymanko.github.io/arrow-site/sitemap.xml

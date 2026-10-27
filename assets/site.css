@@ -111,6 +111,48 @@ p{max-width:62ch}
 .ui-next b{font-weight:600;color:var(--muted)}
 .ui-card.ui-visit{display:flex;justify-content:space-between;align-items:center;background:var(--accent);color:#fff}
 .ui-visit b{font-size:13px}.ui-visit span{font-size:11.5px;opacity:.9}
+/* New scenes: SOS, the assistant, a shelter friend. */
+.ui-sos{background:var(--accent);color:#fff;border-radius:18px;padding:12px;margin-bottom:10px}
+.ui-sos>b{display:block;font-size:14px;margin-bottom:8px}
+.ui-vet{display:flex;align-items:center;justify-content:space-between;background:#fff;color:var(--ink);border-radius:13px;padding:8px 10px;margin-bottom:6px}
+.ui-vet b{display:block;font-size:12.5px}.ui-vet span{font-size:11px;color:var(--accent);font-weight:700}
+.ui-vet i{font-style:normal;font-size:11.5px;font-weight:700;color:#fff;background:var(--accent);border-radius:999px;padding:5px 11px}
+.ui-line{font-size:11.5px;font-weight:700;background:rgba(255,255,255,.18);border-radius:11px;padding:7px 10px}
+.ui-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.ui-chips span{font-size:12px;font-weight:700;background:#fff;border-radius:999px;padding:7px 11px}
+.ui-chips span.on{background:var(--accent);color:#fff}
+.ui-verdict b{display:block;font-size:12.5px}.ui-verdict span{font-size:12px;color:var(--accent);font-weight:700}
+.ui-ai{display:inline-block;font-size:10.5px;font-weight:800;color:var(--accent);background:var(--blush);border-radius:999px;padding:5px 10px;margin-bottom:10px}
+.ui-lead{font-size:16px;font-weight:700;line-height:1.3;margin-bottom:10px}
+.ui-card-title{display:block;font-size:13.5px;margin-bottom:6px}
+.ui-item{font-size:12.5px;line-height:1.35}
+.ui-quote{font-size:11.5px;font-style:italic;color:var(--muted);margin-top:4px}
+.ui-btn-soft{display:block;text-align:center;margin-top:9px;font-size:12.5px;font-weight:700;color:var(--accent);background:var(--blush);border-radius:12px;padding:9px}
+.ui-temper{background:var(--accent);color:#fff;border-radius:20px;padding:14px;margin-bottom:10px}
+.ui-temper span{display:block;font-size:11px;font-weight:700;opacity:.85}.ui-temper b{display:block;font-size:24px;letter-spacing:-.02em;margin:2px 0}.ui-temper em{font-style:normal;font-size:12.5px;font-weight:700}
+.ui-pair{display:flex;align-items:center;margin-bottom:10px}
+.ui-pair img{width:62px;height:62px;border-radius:20px;object-fit:cover}
+.ui-pair i{width:34px;height:34px;margin:0 -6px;z-index:1;border-radius:11px;background:var(--accent);-webkit-mask:none;position:relative}
+.ui-pair i::after{content:"";position:absolute;inset:8px;background:#fff;-webkit-mask:url(img/arrow-glyph.svg) center/contain no-repeat;mask:url(img/arrow-glyph.svg) center/contain no-repeat}
+.ui-check{font-size:12.5px;margin-top:3px}.ui-check::before{content:"✓ ";color:var(--accent);font-weight:800}
+.ui-btn{display:block;text-align:center;margin-top:10px;font-size:13px;font-weight:700;color:#fff;background:var(--accent);border-radius:12px;padding:10px}
+/* The day: a big clock above each moment, and the colour behind the phone follows the hour. */
+.story-head{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap);align-items:end}
+.story-head .story-title{grid-column:1/8}
+.story-lede{grid-column:8/13;font-size:var(--s-lead);max-width:34ch;justify-self:end}
+.step-time{display:flex;align-items:baseline;gap:14px;margin-bottom:14px;font-size:var(--s-lead);font-weight:600;color:var(--muted);max-width:none}
+.step-time time{font-size:clamp(48px,5.4vw,88px);font-weight:800;letter-spacing:-.045em;line-height:.95;color:var(--accent)}
+.story[data-active=today] .stage-disc{background:var(--pink);transform:rotate(-6deg)}
+.story[data-active=fed] .stage-disc{background:var(--pink);transform:rotate(4deg)}
+.story[data-active=turns] .stage-disc{background:var(--coral);transform:rotate(-3deg)}
+.story[data-active=train] .stage-disc{background:var(--accent);transform:rotate(5deg)}
+.story[data-active=sos] .stage-disc{background:var(--accent);transform:rotate(-7deg)}
+.story[data-active=assistant] .stage-disc{background:var(--deep);transform:rotate(3deg)}
+.story[data-active=remind] .stage-disc{background:var(--deep);transform:rotate(-4deg)}
+.story[data-active=health] .stage-disc{background:#5c0e0c;transform:rotate(6deg)}
+.story[data-active=stats] .stage-disc{background:var(--coral);transform:rotate(-5deg)}
+.story[data-active=medals] .stage-disc{background:var(--accent);transform:rotate(4deg)}
+.story[data-active=friend] .stage-disc{background:var(--pink);transform:rotate(-6deg)}
 .ui-tabs{position:absolute;left:12px;right:12px;bottom:16px;display:flex;align-items:center;gap:2px;background:#fff;border:1px solid #e6e6e9;border-radius:999px;padding:5px;z-index:2}
 .ui-tabs span{flex:1;display:flex;align-items:center;justify-content:center;height:40px;color:#8b8c93}
 .ui-tabs span.on{flex:none;gap:6px;padding:0 14px;background:var(--accent);color:#fff;border-radius:999px;font-weight:700;font-size:12.5px}
@@ -225,16 +267,19 @@ p{max-width:62ch}
 .faq{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap);padding:clamp(120px,12vw,200px) var(--margin) 0}
 .faq h2{grid-column:3/11;font-size:clamp(36px,4vw,60px);margin-bottom:40px}
 .cards{grid-column:3/11}
-.card{position:relative;margin-top:-28px;padding-top:40px;border-radius:0 22px 22px 22px}
-.card:first-child{margin-top:0}
-.card .tab{position:absolute;top:0;height:40px;width:200px;display:flex;align-items:center;padding-left:18px;font-size:16px;font-weight:700;border-radius:16px 16px 0 0}
-.c1,.c1 .tab{background:var(--blush)}.c2,.c2 .tab{background:var(--paper)}.c3,.c3 .tab{background:#fcd3cd}
-.card[open] .tab{color:var(--accent)}
-.card:nth-child(1) .tab{left:0}.card:nth-child(2) .tab{left:150px}.card:nth-child(3) .tab{left:300px}.card:nth-child(4) .tab{left:450px}.card:nth-child(5) .tab{left:600px}
-.card summary{list-style:none;cursor:pointer;padding:18px 24px 44px}
+/* FAQ: rounded cards like the app, a small topic chip, one round toggle. */
+.cards{display:grid;gap:10px;min-width:0}
+.card{border-radius:24px;overflow:hidden;transition:background .2s}
+.card .tab{display:inline-flex;align-items:center;height:28px;padding:0 12px;margin-bottom:10px;font-size:13px;font-weight:700;color:var(--accent);background:#fff;border-radius:999px}
+.c1{background:var(--blush)}.c2{background:var(--paper)}.c3{background:#fcd3cd}
+.card summary{list-style:none;cursor:pointer;display:block;position:relative;padding:22px 76px 22px 24px}
 .card summary::-webkit-details-marker{display:none}
-.card .q{display:block;font-size:20px;font-weight:700}
-.card p{padding:0 24px 56px;font-size:17px;max-width:50ch}
+.card summary::after{content:"";position:absolute;right:20px;top:50%;width:40px;height:40px;margin-top:-20px;border-radius:50%;background:#fff;
+  -webkit-mask:none;transition:transform .25s var(--ease),background .2s}
+.card summary::before{content:"+";position:absolute;right:20px;top:50%;width:40px;height:40px;margin-top:-20px;display:grid;place-items:center;font-size:24px;font-weight:500;color:var(--accent);z-index:1;transition:transform .25s var(--ease)}
+.card[open] summary::before{transform:rotate(45deg)}
+.card .q{display:block;font-size:20px;font-weight:700;line-height:1.25}
+.card p{padding:0 24px 26px;font-size:17px;max-width:56ch}
 .card summary:hover .q{color:var(--accent)}
 
 /* CTA: the action tile, a row cropped from a longer one. */
@@ -278,13 +323,15 @@ p{max-width:62ch}
   .lesson-frame{margin-top:24px}
   .plans button{font-size:10vw}
   .plan-stage{margin-top:16px}
-  .card .tab{width:120px}.card:nth-child(2) .tab{left:48px}.card:nth-child(3) .tab{left:96px}.card:nth-child(4) .tab{left:144px}.card:nth-child(5) .tab{left:192px}
+  .card .q{font-size:18px}
   .faq h2{font-size:9vw}
   .action{grid-template-columns:1fr 1fr;padding-left:var(--margin);padding-right:var(--margin)}
   .main-tile{grid-column:1/-1;height:auto;min-height:300px;order:-1;padding:28px}
   .main-tile h2{font-size:28px}
   .side-l,.side-r{grid-column:auto;height:120px;margin:0}
   .foot-cols{grid-template-columns:1fr 1fr}
+  .story-head{grid-template-columns:1fr}.story-head .story-title,.story-lede{grid-column:1;justify-self:start}
+  .step-time time{font-size:44px}
   .story-grid{grid-template-columns:1fr}
   .story-stage{display:contents}
   .stage-sticky{order:-1;top:64px;height:auto;padding:16px 0;align-self:start;background:var(--ground);z-index:2}
