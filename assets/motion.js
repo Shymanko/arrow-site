@@ -60,6 +60,25 @@
   new MutationObserver(list => list.forEach(m => { if (m.target.classList.contains('is-on') && !m.oldValue?.includes('is-on')) roll(m.target); }))
     .observe($('.story-steps') || document.body, { attributes: true, attributeFilter: ['class'], attributeOldValue: true, subtree: true });
 
+  // Community: as Saturday arrives and the like lands, little hearts float up from it, as if from across town.
+  const comm = $('.screen.comm'), like = comm && $('.like', comm);
+  if (like) {
+    const burst = () => {
+      for (let i = 0; i < 8; i++) {
+        const h = document.createElement('i');
+        h.className = 'fly-heart';
+        like.appendChild(h);
+        gsap.fromTo(h, { x: 0, y: 0, scale: 0.3, opacity: 1 }, {
+          x: (i - 3.5) * 8 + gsap.utils.random(-6, 6), y: -gsap.utils.random(46, 104), rotation: gsap.utils.random(-35, 35),
+          scale: gsap.utils.random(0.7, 1.15), opacity: 0, duration: gsap.utils.random(0.9, 1.4), ease: 'power2.out',
+          delay: 1.3 + i * 0.05, immediateRender: false, onComplete: () => h.remove()
+        });
+      }
+    };
+    new MutationObserver(list => list.forEach(m => { if (comm.classList.contains('is-on') && !m.oldValue?.includes('is-on')) burst(); }))
+      .observe(comm, { attributes: true, attributeFilter: ['class'], attributeOldValue: true });
+  }
+
   // Medal wall: medals arrive in a wave from the centre, then float at different depths and follow the pointer.
   const wall = $('.wall');
   if (wall) {
