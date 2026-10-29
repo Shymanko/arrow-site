@@ -50,7 +50,7 @@ Allow: /
 
 # If you quote a figure from our guides, please cite the underlying veterinary
 # source we link to, not just Arrow.
-# Machine-readable site summary: https://shymanko.github.io/arrow-site/llms.txt
-# Machine-readable pricing:      https://shymanko.github.io/arrow-site/pricing.md
+# Machine-readable site summary: https://arrowpetcare.com/llms.txt
+# Machine-readable pricing:      https://arrowpetcare.com/pricing.md
 
-Sitemap: https://shymanko.github.io/arrow-site/sitemap.xml
+Sitemap: https://arrowpetcare.com/sitemap.xml

@@ -635,20 +635,9 @@ p{max-width:62ch}
 .cel-shelf img{background:rgba(255,255,255,.16);border-radius:14px;padding:4px}
 .cel-count{font-size:11px;font-weight:700;opacity:.9}
 
-/* Lessons: three real steps of one lesson, side by side. */
-.lesson-steps{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap);margin-top:clamp(40px,5vw,72px)}
-.lesson-steps figure{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/5;background:var(--paper)}
-.lesson-steps img{width:100%;height:100%;object-fit:cover;object-position:50% 75%;transition:transform .8s var(--ease)}
-.lesson-steps figure:hover img{transform:scale(1.04)}
-.lesson-steps figcaption{position:absolute;left:12px;right:12px;bottom:12px;background:#fff;border-radius:18px;padding:12px 14px;font-size:var(--s-small);line-height:1.35}
-.lesson-steps figcaption b{display:block;color:var(--accent);font-size:17px}
 
 @media (max-width:900px){
   .stage-map{width:min(70vw,340px);--z:.62}
-  .lesson-steps{grid-column:1;gap:8px}
-  .lesson-steps figure{border-radius:20px}
-  .lesson-steps figcaption{left:6px;right:6px;bottom:6px;border-radius:12px;padding:7px 8px;font-size:0;line-height:1.2}
-  .lesson-steps figcaption b{font-size:13px}
 }
 @media (prefers-reduced-motion:reduce){
   .walk-map .route,.walk-map .route-case{stroke-dashoffset:0!important}
