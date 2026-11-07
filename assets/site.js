@@ -35,7 +35,7 @@
   const sheet = $('.ui-sheet'), toast = $('.ui-toast');
   $$('[data-sheet]').forEach(b => b.addEventListener('click', () => {
     sheet.hidden = true;
-    toast.textContent = b.dataset.sheet === 'log' ? 'Second meal logged. The family sees two.' : 'Nothing logged. Luna is fed.';
+    toast.textContent = (window.ARROW_TOASTS || {})[b.dataset.sheet] || (b.dataset.sheet === 'log' ? 'Second meal logged. The family sees two.' : 'Nothing logged. Luna is fed.');
     toast.hidden = false;
     clearTimeout(toast.t); toast.t = setTimeout(() => { toast.hidden = true; sheet.hidden = false; }, 2400);
   }));
@@ -44,7 +44,7 @@
   $$('.pack').forEach(b => b.addEventListener('click', () => b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true'))));
 
   // Pricing: one stage, contents follow the selected plan.
-  const plans = {
+  const plans = window.ARROW_PLANS || {
     free: ['$0', 'forever', "Your whole family with no limit on people. Turns, rotations and asking for help, the daily log, walks with a map, health records, medicines and reminders, 60 medals. Two pets, eight lessons, ten documents.", 'Coming to iPhone'],
     year: ['$39.99', 'a year', 'Everything in Free, plus unlimited pets, all 24 lessons and unlimited documents. Seven days free.', 'Coming to iPhone'],
     month: ['$4.99', 'a month', 'Everything in Plus, billed monthly. Cancel any time in your Apple ID settings. Seven days free.', 'Coming to iPhone']
